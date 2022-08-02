@@ -2,6 +2,7 @@
 :local ftpserver "int-ftp"
 :local username ""
 :local password ""
+:local encpass ""
 
 ### Set Local and Remote Filename variables. Do not change this unless you want to edit the format of the filename.
 ### Default "local file name" is always the same to avoid lots of files and running out of space, "remote file name" uploaded to FTP has the date
@@ -22,8 +23,8 @@
 :log info "STARTING BACKUP";
 
 ### Create backup file and export the config.
-export compact file="$localfilename"
-/system backup save name="$localfilename"
+export compact show-sensitive file="$localfilename"
+/system backup save name="$localfilename" password="$encpass"
 :log info "Backup Created Successfully"
 
 ### Upload config file to FTP server.
